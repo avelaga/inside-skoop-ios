@@ -18,7 +18,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         styleUI()
     }
     
@@ -38,31 +37,60 @@ class SettingsViewController: UIViewController {
         loginButton.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-//    https://console.firebase.google.com/u/0/project/inside-skoop/authentication/users
+    //    https://console.firebase.google.com/u/0/project/inside-skoop/authentication/users
     @IBAction func signUpPressed(_ sender: Any) {
-         if let email = emailField.text, let password = passwordField.text {
-        Auth.auth().createUser( withEmail: email, password: password) {
-                    user, error in if error == nil {
-                        Auth.auth().signIn(
-                            withEmail: email,
-                            password: password
-                        )
-                        print("crated user")
-                    }else{
-                        print(error!)
+        if let email = emailField.text, let password = passwordField.text {
+            Auth.auth().createUser( withEmail: email, password: password) {
+                user, error in if error == nil {
+                    Auth.auth().signIn(
+                        withEmail: email,
+                        password: password
+                    )
+                    authenticated = true
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    switch error {
+                    // wrong password
+                    case .some(let error as NSError) where error.code == AuthErrorCode.wrongPassword.rawValue:
+                        let controller = UIAlertController(
+                            title: "Login Error",
+                            message: "Wrong password",
+                            preferredStyle: .alert)
+                        controller.addAction(UIAlertAction(title:"Okay",style:.default,handler:nil))
+                        self.present(controller, animated: true, completion: nil)
+                    // alert with firebase error
+                    case .some(let error):
+                        let controller = UIAlertController(
+                            title: "Login Error",
+                            message: error.localizedDescription,
+                            preferredStyle: .alert)
+                        controller.addAction(UIAlertAction(title:"Okay",style:.default,handler:nil))
+                        self.present(controller, animated: true, completion: nil)
+                    case .none:
+                        print("good")
                     }
                 }
+            }
         }
     }
     
     @IBAction func loginPressed(_ sender: Any) {
-        
         if let email = emailField.text, let password = passwordField.text {
             Auth.auth().signIn(
                 withEmail: email,
                 password: password
-            )
-            print("logged in")
+            ) { user, error in if error != nil {
+                let controller = UIAlertController(
+                    title: "Login Error",
+                    message: "Wrong password",
+                    preferredStyle: .alert)
+                controller.addAction(UIAlertAction(title:"Okay",style:.default,handler:nil))
+                self.present(controller, animated: true, completion: nil)
+            } else{
+                authenticated = true
+                self.dismiss(animated: true, completion: nil)
+                }
+            }
         }
     }
     

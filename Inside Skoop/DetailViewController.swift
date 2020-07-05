@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let reviews = [(semester: "Spring 2020", tagOne: "Easy A", tagTwo: "Test Heavy", review: "oh my god so hard oh my god so hard oh my god so hard oh my god so hard "), (semester: "Fall 2020", tagOne: "Good Professor", tagTwo: "Test Heavy", review: "best ever yes very good best ever yes very good best ever yes very good "), (semester: "Summer 3020", tagOne: "Actually Useful", tagTwo: "Project Heavy", review: "oh my god so hard oh my god so hard oh my god so hard oh my god so hard ")]
+    let reviews = [(semester: "Spring 2020", tagOne: "Easy A", tagTwo: "Test Heavy", review: "oh my god so hard oh my god so hard oh my god so hard oh my god so hard "), (semester: "Fall 2020", tagOne: "Good Professor", tagTwo: "Test Heavy", review: "best ever yes very good best ever yes very good best ever yes very good "), (semester: "Summer 3020", tagOne: "Actually Useful", tagTwo: "Project Heavy-", review: "oh my god so hard oh my god so hard oh my god so hard oh my god so hard ")]
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {

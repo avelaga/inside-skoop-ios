@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
+var authenticated = false
+
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let departments = ["All Departments", "A", "B", "C", "D", "E"]
@@ -36,6 +38,31 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
 //        let ref = Database.database().reference(withPath: "courses")
 //        print(ref)
+        
+        let url = URL(string: "https://jsonplaceholder.typicode.com/todos/1")
+        guard let requestUrl = url else { fatalError() }
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+            
+            // Convert HTTP Response Data to a simple String
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+            }
+            
+        }
+        task.resume()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
