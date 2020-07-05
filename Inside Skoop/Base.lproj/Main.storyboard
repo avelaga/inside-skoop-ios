@@ -51,7 +51,7 @@
                                 <rect key="frame" x="48" y="390" width="318" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-F5-AMg">
-                                        <rect key="frame" x="0.0" y="0.0" width="148" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
                                         <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Dxd-tU-WYO"/>
@@ -65,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00C-Jr-RbF">
-                                        <rect key="frame" x="168" y="0.0" width="150" height="35"/>
+                                        <rect key="frame" x="170" y="0.0" width="148" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fQC-f9-uGN"/>
                                             <constraint firstAttribute="width" constant="150" id="tbU-ir-Eg2"/>
@@ -139,7 +139,7 @@
                                     <constraint firstAttribute="height" constant="35" id="ZEq-eI-Cni"/>
                                     <constraint firstAttribute="width" constant="294" id="pqI-dj-U1C"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rih-l6-z5v">
@@ -150,27 +150,115 @@
                                     <constraint firstAttribute="height" constant="35" id="lkt-Vz-B0g"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gV-Gt-K2c">
-                                <rect key="frame" x="200" y="664" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jN-v6-GW9">
+                                <rect key="frame" x="70" y="541" width="81" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="ZEU-hx-sGg"/>
+                                    <constraint firstAttribute="height" constant="35" id="yYM-nD-3zf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                <state key="normal" title="Easy A">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <segue destination="05t-cc-uRx" kind="show" id="FZ8-6H-IDp"/>
+                                    <action selector="easyAToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bYH-yT-B8y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRe-uI-kwX">
+                                <rect key="frame" x="176" y="541" width="137" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="frT-wl-CP8"/>
+                                    <constraint firstAttribute="width" constant="137" id="kXU-kX-Rao"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="12"/>
+                                <state key="normal" title="Good Professor">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goodProfessorToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gfo-0l-8pa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKg-ce-158">
+                                <rect key="frame" x="48" y="591" width="144" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="VqY-SX-xLK"/>
+                                    <constraint firstAttribute="width" constant="144" id="krD-YV-qsJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                <state key="normal" title="Light Homework">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="lightHomeworkToggle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FlR-r9-Ctr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJO-qk-rSp">
+                                <rect key="frame" x="217" y="591" width="129" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="nmy-Fg-tbD"/>
+                                    <constraint firstAttribute="height" constant="35" id="qmo-tB-qiN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                <state key="normal" title="Project Heavy">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="projectHeavyToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WnV-VH-7v4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORB-gT-Udv">
+                                <rect key="frame" x="142.5" y="641" width="129" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="XHK-Jx-eKR"/>
+                                    <constraint firstAttribute="height" constant="35" id="aRh-as-i7F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                <state key="normal" title="Actually Useful">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="actuallyUsefulToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z7i-zf-kKo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P1-Se-1Sm">
+                                <rect key="frame" x="66" y="741" width="283" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0ag-kj-m9t"/>
+                                    <constraint firstAttribute="width" constant="283" id="UYC-YT-HAB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="25"/>
+                                <state key="normal" title="What's the skoop?">
+                                    <color key="titleColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTA-ON-0jx"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="RKg-ce-158" firstAttribute="top" secondItem="3jN-v6-GW9" secondAttribute="bottom" constant="15" id="4RW-EM-emh"/>
+                            <constraint firstItem="ORB-gT-Udv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Y6-ko-S1d"/>
+                            <constraint firstItem="RKg-ce-158" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="G2w-kV-xm5"/>
                             <constraint firstItem="Rih-l6-z5v" firstAttribute="top" secondItem="ZbR-Bj-ZHu" secondAttribute="bottom" constant="45.5" id="GBO-VM-ARI"/>
                             <constraint firstItem="ZbR-Bj-ZHu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MIH-Kz-DnA"/>
                             <constraint firstItem="Rih-l6-z5v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sqo-pB-ubT"/>
+                            <constraint firstItem="dRe-uI-kwX" firstAttribute="top" secondItem="Rih-l6-z5v" secondAttribute="bottom" constant="72" id="XS6-ko-EY6"/>
                             <constraint firstItem="usC-pK-rDV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="Zfh-5f-VtN"/>
+                            <constraint firstItem="MJO-qk-rSp" firstAttribute="top" secondItem="dRe-uI-kwX" secondAttribute="bottom" constant="15" id="b4N-6M-YIC"/>
+                            <constraint firstItem="ORB-gT-Udv" firstAttribute="top" secondItem="RKg-ce-158" secondAttribute="bottom" constant="15" id="bEY-12-3oh"/>
                             <constraint firstItem="usC-pK-rDV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bkP-ks-2my"/>
+                            <constraint firstItem="6P1-Se-1Sm" firstAttribute="top" secondItem="ORB-gT-Udv" secondAttribute="bottom" constant="65" id="c5s-x7-2Xb"/>
+                            <constraint firstItem="6P1-Se-1Sm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cfs-h6-kLJ"/>
                             <constraint firstItem="ZbR-Bj-ZHu" firstAttribute="top" secondItem="YDe-tZ-Nq4" secondAttribute="bottom" constant="50" id="e06-ll-m3Q"/>
                             <constraint firstItem="YDe-tZ-Nq4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="goZ-4i-Gh4"/>
+                            <constraint firstItem="3jN-v6-GW9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="gqx-dc-uzC"/>
+                            <constraint firstItem="3jN-v6-GW9" firstAttribute="top" secondItem="Rih-l6-z5v" secondAttribute="bottom" constant="72" id="pVC-Ne-PxP"/>
+                            <constraint firstItem="dRe-uI-kwX" firstAttribute="leading" secondItem="3jN-v6-GW9" secondAttribute="trailing" constant="25" id="r0d-cm-rdT"/>
+                            <constraint firstItem="MJO-qk-rSp" firstAttribute="leading" secondItem="RKg-ce-158" secondAttribute="trailing" constant="25" id="vrk-Mv-FAS"/>
                             <constraint firstItem="YDe-tZ-Nq4" firstAttribute="top" secondItem="usC-pK-rDV" secondAttribute="bottom" constant="25" id="w0C-Q7-hSK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -184,8 +272,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="actuallyUsefulButton" destination="ORB-gT-Udv" id="8tJ-un-nag"/>
                         <outlet property="departmentField" destination="Rih-l6-z5v" id="3xa-ni-xNw"/>
+                        <outlet property="easyAButton" destination="3jN-v6-GW9" id="9pX-qA-3OR"/>
+                        <outlet property="goodProfessorButton" destination="dRe-uI-kwX" id="8zA-gJ-OfR"/>
+                        <outlet property="lightHomeworkButton" destination="RKg-ce-158" id="zXZ-06-8KT"/>
+                        <outlet property="projectHeavyButton" destination="MJO-qk-rSp" id="bNy-GE-yTj"/>
+                        <outlet property="searchButton" destination="6P1-Se-1Sm" id="Thv-vj-TQ7"/>
                         <outlet property="searchField" destination="ZbR-Bj-ZHu" id="1G2-ON-WSO"/>
+                        <segue destination="05t-cc-uRx" kind="show" identifier="SearchSegueID" id="CUI-Xb-0PB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -465,7 +560,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hFs-OT-8R3"/>
+        <segue reference="fQN-mp-x29"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
