@@ -66,5 +66,10 @@
 		<string>AvenirLTStd-Book.otf</string>
 		<string>Berthold-Akzidenz-Grotesk-BE-Li.otf</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

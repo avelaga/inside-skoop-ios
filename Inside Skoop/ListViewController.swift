@@ -21,6 +21,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.separatorColor = UIColor.clear
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if darkMode {
+            overrideUserInterfaceStyle = .dark
+        }else{
+            overrideUserInterfaceStyle = .light
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count

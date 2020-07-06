@@ -51,7 +51,7 @@
                                 <rect key="frame" x="48" y="390" width="318" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-F5-AMg">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="35"/>
                                         <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Dxd-tU-WYO"/>
@@ -65,13 +65,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00C-Jr-RbF">
-                                        <rect key="frame" x="170" y="0.0" width="148" height="35"/>
+                                        <rect key="frame" x="168" y="0.0" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fQC-f9-uGN"/>
                                             <constraint firstAttribute="width" constant="150" id="tbU-ir-Eg2"/>
                                         </constraints>
                                         <state key="normal" title="Login">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="loginPressed:" destination="O6n-e2-nVb" eventType="touchUpInside" id="SK4-1R-wBM"/>
@@ -82,21 +82,35 @@
                                     <constraint firstAttribute="width" constant="318" id="jCz-jb-xvu"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQo-Xb-Mt3">
+                                <rect key="frame" x="346" y="744" width="19.5" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="moon.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="darkModeToggled:" destination="O6n-e2-nVb" eventType="touchUpInside" id="pew-M5-8a6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="lhR-u9-50o" firstAttribute="top" secondItem="U6u-Vl-kQi" secondAttribute="bottom" constant="20" id="0yQ-pi-vtN"/>
                             <constraint firstItem="90c-eV-tkG" firstAttribute="top" secondItem="h9l-sP-fQ7" secondAttribute="top" constant="149" id="Hdv-55-25s"/>
                             <constraint firstItem="U6u-Vl-kQi" firstAttribute="top" secondItem="90c-eV-tkG" secondAttribute="bottom" constant="60" id="Lbn-Pq-thd"/>
+                            <constraint firstItem="AQo-Xb-Mt3" firstAttribute="leading" secondItem="h9l-sP-fQ7" secondAttribute="leading" constant="346" id="PgW-LW-DNa"/>
                             <constraint firstItem="U6u-Vl-kQi" firstAttribute="centerX" secondItem="oEq-9p-vGp" secondAttribute="centerX" id="QB8-Bx-9Tt"/>
                             <constraint firstItem="lhR-u9-50o" firstAttribute="centerX" secondItem="oEq-9p-vGp" secondAttribute="centerX" id="cU0-DI-vN8"/>
                             <constraint firstItem="90c-eV-tkG" firstAttribute="centerX" secondItem="oEq-9p-vGp" secondAttribute="centerX" id="qCR-hE-bDA"/>
                             <constraint firstItem="PNz-G0-yBQ" firstAttribute="top" secondItem="lhR-u9-50o" secondAttribute="bottom" constant="33.5" id="vtP-92-arW"/>
+                            <constraint firstItem="AQo-Xb-Mt3" firstAttribute="top" secondItem="h9l-sP-fQ7" secondAttribute="top" constant="744" id="xih-Xx-EuE"/>
                             <constraint firstItem="PNz-G0-yBQ" firstAttribute="centerX" secondItem="oEq-9p-vGp" secondAttribute="centerX" id="xm2-Mf-5Qv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h9l-sP-fQ7"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rel-gQ-YAq"/>
                     <connections>
+                        <outlet property="darkModeButton" destination="AQo-Xb-Mt3" id="dX6-hh-0hz"/>
                         <outlet property="emailField" destination="U6u-Vl-kQi" id="Hko-eO-3Yq"/>
                         <outlet property="loginButton" destination="00C-Jr-RbF" id="ZJ8-Jg-8R4"/>
                         <outlet property="passwordField" destination="lhR-u9-50o" id="S2c-vA-RK1"/>
@@ -161,7 +175,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
                                 <state key="normal" title="Easy A">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="easyAToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bYH-yT-B8y"/>
@@ -175,7 +189,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="12"/>
                                 <state key="normal" title="Good Professor">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="goodProfessorToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gfo-0l-8pa"/>
@@ -189,7 +203,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
                                 <state key="normal" title="Light Homework">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="lightHomeworkToggle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FlR-r9-Ctr"/>
@@ -203,7 +217,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
                                 <state key="normal" title="Project Heavy">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="projectHeavyToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WnV-VH-7v4"/>
@@ -217,7 +231,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
                                 <state key="normal" title="Actually Useful">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="actuallyUsefulToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z7i-zf-kKo"/>
@@ -237,6 +251,20 @@
                                     <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTA-ON-0jx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IW-9k-Qbs">
+                                <rect key="frame" x="98.5" y="259" width="217" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="217" id="1sz-oZ-zpg"/>
+                                    <constraint firstAttribute="height" constant="45" id="zea-It-rQe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="25"/>
+                                <state key="normal" title="Write a review">
+                                    <color key="titleColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="TND-kz-z0M" kind="show" id="iPf-Ld-AS6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -254,10 +282,12 @@
                             <constraint firstItem="6P1-Se-1Sm" firstAttribute="top" secondItem="ORB-gT-Udv" secondAttribute="bottom" constant="65" id="c5s-x7-2Xb"/>
                             <constraint firstItem="6P1-Se-1Sm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cfs-h6-kLJ"/>
                             <constraint firstItem="ZbR-Bj-ZHu" firstAttribute="top" secondItem="YDe-tZ-Nq4" secondAttribute="bottom" constant="50" id="e06-ll-m3Q"/>
+                            <constraint firstItem="9IW-9k-Qbs" firstAttribute="top" secondItem="usC-pK-rDV" secondAttribute="bottom" constant="27" id="fa0-WO-zaL"/>
                             <constraint firstItem="YDe-tZ-Nq4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="goZ-4i-Gh4"/>
                             <constraint firstItem="3jN-v6-GW9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="gqx-dc-uzC"/>
                             <constraint firstItem="3jN-v6-GW9" firstAttribute="top" secondItem="Rih-l6-z5v" secondAttribute="bottom" constant="72" id="pVC-Ne-PxP"/>
                             <constraint firstItem="dRe-uI-kwX" firstAttribute="leading" secondItem="3jN-v6-GW9" secondAttribute="trailing" constant="25" id="r0d-cm-rdT"/>
+                            <constraint firstItem="9IW-9k-Qbs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tth-t6-rKd"/>
                             <constraint firstItem="MJO-qk-rSp" firstAttribute="leading" secondItem="RKg-ce-158" secondAttribute="trailing" constant="25" id="vrk-Mv-FAS"/>
                             <constraint firstItem="YDe-tZ-Nq4" firstAttribute="top" secondItem="usC-pK-rDV" secondAttribute="bottom" constant="25" id="w0C-Q7-hSK"/>
                         </constraints>
@@ -280,6 +310,9 @@
                         <outlet property="projectHeavyButton" destination="MJO-qk-rSp" id="bNy-GE-yTj"/>
                         <outlet property="searchButton" destination="6P1-Se-1Sm" id="Thv-vj-TQ7"/>
                         <outlet property="searchField" destination="ZbR-Bj-ZHu" id="1G2-ON-WSO"/>
+                        <outlet property="subtitleLabel" destination="YDe-tZ-Nq4" id="nRL-hD-FMv"/>
+                        <outlet property="titleLabel" destination="usC-pK-rDV" id="mrB-Yq-dvL"/>
+                        <outlet property="writeAReviewButton" destination="9IW-9k-Qbs" id="phk-tx-YZx"/>
                         <segue destination="05t-cc-uRx" kind="show" identifier="SearchSegueID" id="CUI-Xb-0PB"/>
                     </connections>
                 </viewController>
@@ -402,6 +435,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ht0-g5-AWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1937.68115942029" y="137.94642857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2QH-cY-H6t">
+            <objects>
+                <viewController id="TND-kz-z0M" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ddh-3W-SHm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7zn-gr-Tb1"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xTC-hF-t07"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdo-y4-HRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="-611"/>
         </scene>
         <!--Inside Skoop-->
         <scene sceneID="YIr-Ly-SaE">
@@ -541,6 +590,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="arrowtriangle.left.fill" catalog="system" id="szI-rK-Uww">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="24"/>
                             <color key="textColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -565,5 +615,6 @@
     <resources>
         <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="moon.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

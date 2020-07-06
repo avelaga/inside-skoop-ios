@@ -10,10 +10,13 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
+let defaults = UserDefaults.standard
 var authenticated = false
+var darkMode = false
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+   
     let departments = ["All Departments", "A", "B", "C", "D", "E"]
     
     // saved search parameters
@@ -33,7 +36,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var lightHomeworkButton: UIButton!
     @IBOutlet weak var projectHeavyButton: UIButton!
     @IBOutlet weak var actuallyUsefulButton: UIButton!
-    
+
+    @IBOutlet weak var writeAReviewButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     
     let thePicker = UIPickerView()
@@ -43,36 +49,70 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         thePicker.delegate = self
         departmentField.inputView = thePicker
         initUIStyles()
-        //        let ref = Database.database().reference(withPath: "courses")
+        autoLogin()
         
-        //        let url = URL(string: "https://jsonplaceholder.typicode.com/todos/1")
-        //        guard let requestUrl = url else { fatalError() }
-        //        var request = URLRequest(url: requestUrl)
-        //        request.httpMethod = "GET"
-        //        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-        //
-        //            // Check if Error took place
-        //            if let error = error {
-        //                print("Error took place \(error)")
-        //                return
-        //            }
-        //
-        //            // Read HTTP Response Status code
-        //            if let response = response as? HTTPURLResponse {
-        //                print("Response HTTP Status code: \(response.statusCode)")
-        //            }
-        //
-        //            // Convert HTTP Response Data to a simple String
-        //            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-        //                print("Response data string:\n \(dataString)")
-        //            }
-        //
-        //        }
-        //        task.resume()
+        darkMode = defaults.bool(forKey: "darkMode")
     }
     
+    func testHTTPRequest(){
+                let url = URL(string: "http://192.168.1.170")
+                guard let requestUrl = url else { fatalError() }
+                var request = URLRequest(url: requestUrl)
+                request.httpMethod = "GET"
+                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        
+                    // Check if Error took place
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+        
+                    // Read HTTP Response Status code
+                    if let response = response as? HTTPURLResponse {
+                        print("Response HTTP Status code: \(response.statusCode)")
+                    }
+        
+                    // Convert HTTP Response Data to a simple String
+                    if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                        print("Response data string:\n \(dataString)")
+                    }
+        
+                }
+                task.resume()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if authenticated {
+            titleLabel.text = "Hi Abhi"
+            subtitleLabel.isHidden = true
+            writeAReviewButton.isHidden = false
+        }else{
+            titleLabel.text = "Get the inside skoop on the classes you want to take"
+            subtitleLabel.isHidden = false
+             writeAReviewButton.isHidden = true
+        }
+        if(darkMode){
+            overrideUserInterfaceStyle = .dark
+        }else{
+            overrideUserInterfaceStyle = .light
+        }
+    }
+    
+    // if login credentials are stored on device, login on launch
+    func autoLogin(){
+        let email = defaults.string(forKey: "email")
+        if email != nil {
+            let password = defaults.string(forKey: "password")
+            Auth.auth().signIn(
+                withEmail: email!,
+                password: password!
+            )
+            authenticated = true
+        }
+    }
+    
+    // these have to be programatically defined
     func initUIStyles(){
-//        let buttonRadius = 15.0
         searchField.layer.cornerRadius = 18.0
         searchField.layer.borderWidth = 1.0
         searchField.layer.borderColor = UIColor.lightGray.cgColor
@@ -103,6 +143,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         searchButton.layer.borderColor = UIColor.lightGray.cgColor
         searchButton.layer.cornerRadius = 23.0
         searchButton.layer.borderWidth = 1.0
+        
+        writeAReviewButton.layer.cornerRadius = 23
+        writeAReviewButton.layer.borderColor = UIColor.lightGray.cgColor
+        writeAReviewButton.layer.borderWidth = 1.0
     }
     
     func setButtonAsSelected(button: UIButton){
@@ -112,7 +156,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func setButtonAsUnselected(button: UIButton){
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.backgroundColor = UIColor.clear.cgColor
     }
@@ -199,4 +243,3 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
 }
-

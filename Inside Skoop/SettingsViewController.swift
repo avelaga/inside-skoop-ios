@@ -15,10 +15,21 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var darkModeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         styleUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(darkMode){
+            overrideUserInterfaceStyle = .dark
+            darkModeButton.tintColor = .white
+        }else{
+            overrideUserInterfaceStyle = .light
+            darkModeButton.tintColor = .black
+        }
     }
     
     func styleUI(){
@@ -47,6 +58,8 @@ class SettingsViewController: UIViewController {
                         password: password
                     )
                     authenticated = true
+                    defaults.set(email, forKey: "email")
+                    defaults.set(password, forKey: "password")
                     self.dismiss(animated: true, completion: nil)
                 }else{
                     switch error {
@@ -88,12 +101,27 @@ class SettingsViewController: UIViewController {
                 self.present(controller, animated: true, completion: nil)
             } else{
                 authenticated = true
+                defaults.set(email, forKey: "email")
+                defaults.set(password, forKey: "password")
                 self.dismiss(animated: true, completion: nil)
                 }
             }
         }
     }
     
+    @IBAction func darkModeToggled(_ sender: Any) {
+        
+        darkMode = !darkMode
+        if(darkMode){
+        overrideUserInterfaceStyle = .dark
+            darkModeButton.tintColor = .white
+        }else{
+            overrideUserInterfaceStyle = .light
+            darkModeButton.tintColor = .black
+        }
+        defaults.removeObject(forKey: "darkMode")
+        defaults.set(darkMode, forKey: "darkMode")
+    }
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //    }
 }

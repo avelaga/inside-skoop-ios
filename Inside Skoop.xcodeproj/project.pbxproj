@@ -21,6 +21,7 @@
 		A5CC3AAE24B1459100C233B5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CC3AAD24B1459100C233B5 /* SettingsViewController.swift */; };
 		A5CC3AB024B1A97100C233B5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CC3AAF24B1A97100C233B5 /* ListViewController.swift */; };
 		A5CC3AB424B1C2F600C233B5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CC3AB324B1C2F600C233B5 /* DetailViewController.swift */; };
+		A5E3CF5524B2A5680031DD83 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E3CF5424B2A5680031DD83 /* NewPostViewController.swift */; };
 		B81AC2A474DE238099F68A43 /* Pods_Inside_Skoop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87C2F4AA56D0DF30D3448E /* Pods_Inside_Skoop.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		A5CC3AAD24B1459100C233B5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A5CC3AAF24B1A97100C233B5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A5CC3AB324B1C2F600C233B5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A5E3CF5424B2A5680031DD83 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		B362606EDA54B8728A24D558 /* Pods-Inside Skoop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inside Skoop.release.xcconfig"; path = "Target Support Files/Pods-Inside Skoop/Pods-Inside Skoop.release.xcconfig"; sourceTree = "<group>"; };
 		E7D18D786A03A1B796594495 /* Pods-Inside Skoop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inside Skoop.debug.xcconfig"; path = "Target Support Files/Pods-Inside Skoop/Pods-Inside Skoop.debug.xcconfig"; sourceTree = "<group>"; };
 		EF87C2F4AA56D0DF30D3448E /* Pods_Inside_Skoop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inside_Skoop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				A5CC3AAD24B1459100C233B5 /* SettingsViewController.swift */,
 				A5CC3AAF24B1A97100C233B5 /* ListViewController.swift */,
 				A5CC3AB324B1C2F600C233B5 /* DetailViewController.swift */,
+				A5E3CF5424B2A5680031DD83 /* NewPostViewController.swift */,
 			);
 			path = "Inside Skoop";
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				A5CC3AB024B1A97100C233B5 /* ListViewController.swift in Sources */,
 				A5C0502024B0FF71005B5805 /* AppDelegate.swift in Sources */,
 				A5CC3AAE24B1459100C233B5 /* SettingsViewController.swift in Sources */,
+				A5E3CF5524B2A5680031DD83 /* NewPostViewController.swift in Sources */,
 				A5C0502224B0FF71005B5805 /* SceneDelegate.swift in Sources */,
 				A5CC3AB424B1C2F600C233B5 /* DetailViewController.swift in Sources */,
 			);
