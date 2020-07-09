@@ -18,7 +18,7 @@ Developed by Abhi Velaga
 Feature | Description
 :---: | :---:
 Login | Allows user to create account and login with Firebase
-UI | Colors, custom buttons, dark mode, and navigation 
+UI | Colors, custom buttons, dark mode, error/success alerts, and navigation 
 Settings | Screen to sign up as new user, login, logout and toggle dark mode. All settings save on the device
 Search | Custom UI to add search criteria for courses
 New reviews | Allows users to write new reviews for a particular class
