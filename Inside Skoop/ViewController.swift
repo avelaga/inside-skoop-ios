@@ -14,10 +14,15 @@ let defaults = UserDefaults.standard
 var authenticated = false
 var darkMode = false
 
+struct Department: Decodable {
+    let id: Int
+    let name: String
+}
+
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-   
-    let departments = ["All Departments", "A", "B", "C", "D", "E"]
+    
+    var departments: [String] = ["All Departments"]
     
     // saved search parameters
     var query = ""
@@ -36,7 +41,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var lightHomeworkButton: UIButton!
     @IBOutlet weak var projectHeavyButton: UIButton!
     @IBOutlet weak var actuallyUsefulButton: UIButton!
-
+    
     @IBOutlet weak var writeAReviewButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -50,47 +55,57 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         departmentField.inputView = thePicker
         initUIStyles()
         autoLogin()
-        
+        getDepartments()
         darkMode = defaults.bool(forKey: "darkMode")
     }
     
-    func testHTTPRequest(){
-                let url = URL(string: "http://192.168.1.170")
-                guard let requestUrl = url else { fatalError() }
-                var request = URLRequest(url: requestUrl)
-                request.httpMethod = "GET"
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-        
-                    // Check if Error took place
-                    if let error = error {
-                        print("Error took place \(error)")
-                        return
-                    }
-        
-                    // Read HTTP Response Status code
-                    if let response = response as? HTTPURLResponse {
-                        print("Response HTTP Status code: \(response.statusCode)")
-                    }
-        
-                    // Convert HTTP Response Data to a simple String
-                    if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                        print("Response data string:\n \(dataString)")
-                    }
-        
+    // get list of available departments from backend
+    func getDepartments(){
+        departments.removeAll()
+        departments.append("All Departments")
+        let url = URL(string: "http://localhost:8000/departments")
+        guard let requestUrl = url else { fatalError() }
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            // Read HTTP Response Status code
+            //            if let response = response as? HTTPURLResponse {
+            //                print("Response HTTP Status code: \(response.statusCode)")
+            //            }
+            
+            // Convert HTTP Response Data to a simple String
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                //                print("Response data string:\n \(dataString)")
+                
+                let jsondata = dataString.data(using: .utf8)!
+                let dep: [Department] = try! JSONDecoder().decode([Department].self, from: jsondata)
+                
+                for index in 0..<dep.count {
+                    self.departments.append(dep[index].name)
                 }
-                task.resume()
+            }
+            
+        }
+        task.resume()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if authenticated {
-            titleLabel.text = "Hi Abhi"
-            subtitleLabel.isHidden = true
-            writeAReviewButton.isHidden = false
-        }else{
-            titleLabel.text = "Get the inside skoop on the classes you want to take"
-            subtitleLabel.isHidden = false
-             writeAReviewButton.isHidden = true
-        }
+        //        if authenticated {
+        //            titleLabel.text = "Hi Abhi"
+        //            subtitleLabel.isHidden = true
+        //            writeAReviewButton.isHidden = false
+        //        }else{
+        //            titleLabel.text = "Get the inside skoop on the classes you want to take"
+        //            subtitleLabel.isHidden = false
+        //            writeAReviewButton.isHidden = true
+        //        }
         if(darkMode){
             overrideUserInterfaceStyle = .dark
         }else{
@@ -118,7 +133,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         searchField.layer.borderColor = UIColor.lightGray.cgColor
         
         departmentField.layer.cornerRadius = 18.0
-        departmentField.layer.borderWidth = 1.0
+        departmentField.layer.borderWidth = 0
         departmentField.text  = departments[0]
         departmentField.layer.borderColor = UIColor.white.cgColor
         
@@ -144,9 +159,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         searchButton.layer.cornerRadius = 23.0
         searchButton.layer.borderWidth = 1.0
         
-        writeAReviewButton.layer.cornerRadius = 23
-        writeAReviewButton.layer.borderColor = UIColor.lightGray.cgColor
-        writeAReviewButton.layer.borderWidth = 1.0
+        //        writeAReviewButton.layer.cornerRadius = 23
+        //        writeAReviewButton.layer.borderColor = UIColor.lightGray.cgColor
+        //        writeAReviewButton.layer.borderWidth = 1.0
     }
     
     func setButtonAsSelected(button: UIButton){
@@ -239,7 +254,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // make api call for search here with stored parameters and store result in destination
+        if segue.identifier == "SearchSegueID" {
+            // send search parameters to list view vc
+            let destination = segue.destination as! ListViewController
+            destination.query = query
+            destination.department = department
+            destination.easyA = easyA
+            destination.goodProfessor = goodProfessor
+            destination.lightHomework = lightHomework
+            destination.projectHeavy = projectHeavy
+            destination.actuallyUseful = actuallyUseful
+        }
     }
-    
 }

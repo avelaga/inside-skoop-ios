@@ -8,21 +8,48 @@
 
 import UIKit
 
+struct Post: Decodable {
+    let url: URL
+    let text: String
+    let easyA: Bool
+    let semester: String
+    let good_professor: Bool
+    let light_homework: Bool
+    let project_heavy: Bool
+    let actually_useful: Bool
+    let course: URL
+}
+
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let reviews = [(semester: "Spring 2020", tagOne: "Easy A", tagTwo: "Test Heavy", review: "oh my god so hard oh my god so hard oh my god so hard oh my god so hard "), (semester: "Fall 2020", tagOne: "Good Professor", tagTwo: "Test Heavy", review: "best ever yes very good best ever yes very good best ever yes very good "), (semester: "Summer 3020", tagOne: "Actually Useful", tagTwo: "Project Heavy-", review: "oh my god so hard oh my god so hard oh my god so hard oh my god so hard ")]
+    var course: Course!
+    var posts: [Post] = []
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var reviewButton: UIButton!
+    @IBOutlet weak var professorLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.separatorColor = UIColor.darkGray
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if authenticated {
+            reviewButton.setTitle("Write a review", for: .normal)
+            reviewButton.isEnabled = true
+        }else{
+            reviewButton.setTitle("Login in settings to leave a review", for: .normal)
+            reviewButton.isEnabled = false
+        }
+        nameLabel.text = course!.course_name
+        professorLabel.text = course!.professor_name
+        getPosts()
         if darkMode {
             overrideUserInterfaceStyle = .dark
         }else{
@@ -30,18 +57,88 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    // get list of available posts from backend
+    func getPosts(){
+        posts.removeAll()
+        let id = course!.id
+        let url = URL(string: "http://localhost:8000/posts/course/\(id)")
+        guard let requestUrl = url else { fatalError() }
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            // Convert HTTP Response Data to a simple String
+            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                //                print("Response data string:\n \(dataString)")
+                let jsondata = dataString.data(using: .utf8)!
+                self.posts = try! JSONDecoder().decode([Post].self, from: jsondata)
+            }
+            
+        }
+        task.resume()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath as IndexPath) as! DetailTableViewCell
         let row = indexPath.row
-        cell.tagOneText = reviews[row].tagOne
-        cell.tagTwoText = reviews[row].tagTwo
-        cell.review = reviews[row].review
-        cell.semester = reviews[row].semester
+        //        cell.tagOneText = reviews[row].tagOne
+        //        cell.tagTwoText = reviews[row].tagTwo
+        
+        var tagOne:String!
+        var tagTwo:String!
+        
+        if posts[row].easyA {
+            tagOne = "Easy A"
+        }
+        if posts[row].good_professor {
+            if tagOne == nil {
+                tagOne = "Good Professor"
+            }else if tagTwo == nil{
+                tagTwo = "Good Professor"
+            }
+        }
+        if posts[row].light_homework {
+            if tagOne == nil {
+                tagOne = "Light Homework"
+            }else if tagTwo == nil{
+                tagTwo = "Light Homework"
+            }
+        }
+        if posts[row].project_heavy {
+            if tagOne == nil {
+                tagOne = "Project Heavy"
+            }else if tagTwo == nil{
+                tagTwo = "Project Heavy"
+            }
+        }
+        if posts[row].actually_useful {
+            if tagOne == nil {
+                tagOne = "Actually Useful"
+            }else if tagTwo == nil{
+                tagTwo = "Actually Useful"
+            }
+        }
+        
+        if tagOne != nil {
+            cell.tagOneText = tagOne!
+        }
+        if tagTwo != nil {
+            cell.tagTwoText = tagTwo!
+        }
+        
+        cell.review = posts[row].text
+        cell.semester = posts[row].semester
         
         return cell
     }
@@ -52,6 +149,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ReviewSegueID" {
+            let destination = segue.destination as! NewPostViewController
+            destination.course_name = course!.course_name
+            destination.id = course!.id 
+        }
     }
     
 }
@@ -75,6 +180,8 @@ class DetailTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
+        tagOne.isHidden = true
+        tagTwo.isHidden = true
         super.setSelected(selected, animated: animated)
         if let text = tagOneText {
             tagOne.setTitle(text, for: .normal)

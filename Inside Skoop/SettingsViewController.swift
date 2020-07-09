@@ -11,18 +11,36 @@ import FirebaseAuth
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var darkModeButton: UIButton!
     
+    @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         styleUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if authenticated {
+            titleField.isHidden = true
+            emailField.isHidden = true
+            passwordField.isHidden = true
+            signUpButton.isHidden = true
+            loginButton.isHidden = true
+            logoutButton.isHidden = false
+        }else{
+            titleField.isHidden = false
+            emailField.isHidden = false
+            passwordField.isHidden = false
+            signUpButton.isHidden = false
+            loginButton.isHidden = false
+            logoutButton.isHidden = true
+        }
+        
         if(darkMode){
             overrideUserInterfaceStyle = .dark
             darkModeButton.tintColor = .white
@@ -42,6 +60,7 @@ class SettingsViewController: UIViewController {
         passwordField.layer.borderColor = UIColor.lightGray.cgColor
         
         signUpButton.layer.cornerRadius = 18.0
+        logoutButton.layer.cornerRadius = 18.0
         
         loginButton.layer.cornerRadius = 18.0
         loginButton.layer.borderWidth = 1.0
@@ -108,12 +127,18 @@ class SettingsViewController: UIViewController {
             }
         }
     }
+    @IBAction func logoutPressed(_ sender: Any) {
+        defaults.removeObject(forKey: "email")
+        defaults.removeObject(forKey: "password")
+        authenticated = false
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func darkModeToggled(_ sender: Any) {
         
         darkMode = !darkMode
         if(darkMode){
-        overrideUserInterfaceStyle = .dark
+            overrideUserInterfaceStyle = .dark
             darkModeButton.tintColor = .white
         }else{
             overrideUserInterfaceStyle = .light
@@ -122,6 +147,4 @@ class SettingsViewController: UIViewController {
         defaults.removeObject(forKey: "darkMode")
         defaults.set(darkMode, forKey: "darkMode")
     }
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //    }
 }

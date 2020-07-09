@@ -92,10 +92,26 @@
                                     <action selector="darkModeToggled:" destination="O6n-e2-nVb" eventType="touchUpInside" id="pew-M5-8a6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnH-BC-k8l">
+                                <rect key="frame" x="132" y="403.5" width="150" height="35"/>
+                                <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="HQn-gK-fsa"/>
+                                    <constraint firstAttribute="width" constant="150" id="kbM-8i-pbZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="O6n-e2-nVb" eventType="touchUpInside" id="KfT-Oh-MXw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="lhR-u9-50o" firstAttribute="top" secondItem="U6u-Vl-kQi" secondAttribute="bottom" constant="20" id="0yQ-pi-vtN"/>
+                            <constraint firstItem="bnH-BC-k8l" firstAttribute="centerX" secondItem="oEq-9p-vGp" secondAttribute="centerX" id="EmE-94-XiA"/>
                             <constraint firstItem="90c-eV-tkG" firstAttribute="top" secondItem="h9l-sP-fQ7" secondAttribute="top" constant="149" id="Hdv-55-25s"/>
                             <constraint firstItem="U6u-Vl-kQi" firstAttribute="top" secondItem="90c-eV-tkG" secondAttribute="bottom" constant="60" id="Lbn-Pq-thd"/>
                             <constraint firstItem="AQo-Xb-Mt3" firstAttribute="leading" secondItem="h9l-sP-fQ7" secondAttribute="leading" constant="346" id="PgW-LW-DNa"/>
@@ -105,6 +121,7 @@
                             <constraint firstItem="PNz-G0-yBQ" firstAttribute="top" secondItem="lhR-u9-50o" secondAttribute="bottom" constant="33.5" id="vtP-92-arW"/>
                             <constraint firstItem="AQo-Xb-Mt3" firstAttribute="top" secondItem="h9l-sP-fQ7" secondAttribute="top" constant="744" id="xih-Xx-EuE"/>
                             <constraint firstItem="PNz-G0-yBQ" firstAttribute="centerX" secondItem="oEq-9p-vGp" secondAttribute="centerX" id="xm2-Mf-5Qv"/>
+                            <constraint firstItem="bnH-BC-k8l" firstAttribute="centerY" secondItem="oEq-9p-vGp" secondAttribute="centerY" id="yT0-NE-5sz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h9l-sP-fQ7"/>
                     </view>
@@ -113,8 +130,10 @@
                         <outlet property="darkModeButton" destination="AQo-Xb-Mt3" id="dX6-hh-0hz"/>
                         <outlet property="emailField" destination="U6u-Vl-kQi" id="Hko-eO-3Yq"/>
                         <outlet property="loginButton" destination="00C-Jr-RbF" id="ZJ8-Jg-8R4"/>
+                        <outlet property="logoutButton" destination="bnH-BC-k8l" id="otx-ko-gEh"/>
                         <outlet property="passwordField" destination="lhR-u9-50o" id="S2c-vA-RK1"/>
                         <outlet property="signUpButton" destination="b2f-F5-AMg" id="rt0-Qq-ptz"/>
+                        <outlet property="titleField" destination="90c-eV-tkG" id="qNM-gl-54p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJg-so-zYv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -251,20 +270,6 @@
                                     <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTA-ON-0jx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IW-9k-Qbs">
-                                <rect key="frame" x="98.5" y="259" width="217" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="217" id="1sz-oZ-zpg"/>
-                                    <constraint firstAttribute="height" constant="45" id="zea-It-rQe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="25"/>
-                                <state key="normal" title="Write a review">
-                                    <color key="titleColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <segue destination="TND-kz-z0M" kind="show" id="iPf-Ld-AS6"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -282,12 +287,10 @@
                             <constraint firstItem="6P1-Se-1Sm" firstAttribute="top" secondItem="ORB-gT-Udv" secondAttribute="bottom" constant="65" id="c5s-x7-2Xb"/>
                             <constraint firstItem="6P1-Se-1Sm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cfs-h6-kLJ"/>
                             <constraint firstItem="ZbR-Bj-ZHu" firstAttribute="top" secondItem="YDe-tZ-Nq4" secondAttribute="bottom" constant="50" id="e06-ll-m3Q"/>
-                            <constraint firstItem="9IW-9k-Qbs" firstAttribute="top" secondItem="usC-pK-rDV" secondAttribute="bottom" constant="27" id="fa0-WO-zaL"/>
                             <constraint firstItem="YDe-tZ-Nq4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="goZ-4i-Gh4"/>
                             <constraint firstItem="3jN-v6-GW9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="gqx-dc-uzC"/>
                             <constraint firstItem="3jN-v6-GW9" firstAttribute="top" secondItem="Rih-l6-z5v" secondAttribute="bottom" constant="72" id="pVC-Ne-PxP"/>
                             <constraint firstItem="dRe-uI-kwX" firstAttribute="leading" secondItem="3jN-v6-GW9" secondAttribute="trailing" constant="25" id="r0d-cm-rdT"/>
-                            <constraint firstItem="9IW-9k-Qbs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tth-t6-rKd"/>
                             <constraint firstItem="MJO-qk-rSp" firstAttribute="leading" secondItem="RKg-ce-158" secondAttribute="trailing" constant="25" id="vrk-Mv-FAS"/>
                             <constraint firstItem="YDe-tZ-Nq4" firstAttribute="top" secondItem="usC-pK-rDV" secondAttribute="bottom" constant="25" id="w0C-Q7-hSK"/>
                         </constraints>
@@ -312,7 +315,6 @@
                         <outlet property="searchField" destination="ZbR-Bj-ZHu" id="1G2-ON-WSO"/>
                         <outlet property="subtitleLabel" destination="YDe-tZ-Nq4" id="nRL-hD-FMv"/>
                         <outlet property="titleLabel" destination="usC-pK-rDV" id="mrB-Yq-dvL"/>
-                        <outlet property="writeAReviewButton" destination="9IW-9k-Qbs" id="phk-tx-YZx"/>
                         <segue destination="05t-cc-uRx" kind="show" identifier="SearchSegueID" id="CUI-Xb-0PB"/>
                     </connections>
                 </viewController>
@@ -409,9 +411,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="border" destination="DUb-ge-gHl" id="qTd-J4-c7X"/>
+                                            <outlet property="courseNameLabel" destination="5Lv-5u-Eow" id="WFi-Jh-2w7"/>
+                                            <outlet property="professorLabel" destination="UnJ-Y5-1Qe" id="B3V-Pe-bd6"/>
                                             <outlet property="tagOne" destination="Gb4-Eh-dtw" id="QWU-Xg-Dgt"/>
                                             <outlet property="tagTwo" destination="1gN-ks-rwi" id="ql2-62-7UQ"/>
-                                            <segue destination="mNp-Yr-qkl" kind="show" id="0U6-Gs-0kV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -430,27 +433,91 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2dP-Xa-5bM" id="jXx-Wq-lFN"/>
+                        <segue destination="mNp-Yr-qkl" kind="show" identifier="DetailSegueID" id="DbE-bX-8DJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ht0-g5-AWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1937.68115942029" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--New Post View Controller-->
         <scene sceneID="2QH-cY-H6t">
             <objects>
-                <viewController id="TND-kz-z0M" sceneMemberID="viewController">
+                <viewController id="TND-kz-z0M" customClass="NewPostViewController" customModule="Inside_Skoop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ddh-3W-SHm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about your experience with past classes!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCw-NU-eHN">
+                                <rect key="frame" x="32" y="128" width="350" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="KC8-t2-skf"/>
+                                    <constraint firstAttribute="width" constant="350" id="qxC-Ab-8lW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Semester taken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FEJ-Y3-UsX">
+                                <rect key="frame" x="48" y="209.5" width="318" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="318" id="Gth-EO-o7A"/>
+                                    <constraint firstAttribute="height" constant="35" id="cuP-GY-hDy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdM-AX-kk9">
+                                <rect key="frame" x="149" y="662" width="120" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="21"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="submit:" destination="TND-kz-z0M" eventType="touchUpInside" id="msF-rW-ym9"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Jy-ZF-2WY">
+                                <rect key="frame" x="48" y="316" width="318" height="125"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="318" id="BKi-2G-xge"/>
+                                    <constraint firstAttribute="height" constant="125" id="N6T-kE-3HD"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8G-v8-HP4">
+                                <rect key="frame" x="48" y="275" width="59" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gCw-NU-eHN" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="8U7-il-lgG"/>
+                            <constraint firstItem="gCw-NU-eHN" firstAttribute="top" secondItem="7zn-gr-Tb1" secondAttribute="top" constant="40" id="8X8-Z0-PnP"/>
+                            <constraint firstItem="5Jy-ZF-2WY" firstAttribute="top" secondItem="FEJ-Y3-UsX" secondAttribute="bottom" constant="50" id="QXA-K9-Q7c"/>
+                            <constraint firstItem="5Jy-ZF-2WY" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="SNf-Vq-zap"/>
+                            <constraint firstItem="FEJ-Y3-UsX" firstAttribute="firstBaseline" secondItem="gCw-NU-eHN" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="nhu-58-2R8"/>
+                            <constraint firstItem="FEJ-Y3-UsX" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="p7s-ii-YaN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7zn-gr-Tb1"/>
                     </view>
                     <navigationItem key="navigationItem" id="xTC-hF-t07"/>
+                    <connections>
+                        <outlet property="reviewField" destination="5Jy-ZF-2WY" id="y0X-ab-TGU"/>
+                        <outlet property="semesterField" destination="FEJ-Y3-UsX" id="Qpo-2n-7nd"/>
+                        <outlet property="titleLabel" destination="gCw-NU-eHN" id="cwc-uB-4VC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdo-y4-HRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042" y="-611"/>
+            <point key="canvasLocation" x="3648" y="138"/>
         </scene>
         <!--Inside Skoop-->
         <scene sceneID="YIr-Ly-SaE">
@@ -479,10 +546,13 @@
                                 <color key="textColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ti-zd-H7j">
-                                <rect key="frame" x="20" y="173" width="374" height="697"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9ti-zd-H7j">
+                                <rect key="frame" x="20" y="206" width="374" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="667" id="DZx-ZQ-5PH"/>
+                                    <constraint firstAttribute="width" constant="374" id="ILh-7K-8GD"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" rowHeight="245" id="8L5-8f-Obe" customClass="DetailTableViewCell" customModule="Inside_Skoop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="245"/>
@@ -507,7 +577,7 @@
                                                         <constraint firstAttribute="width" constant="110" id="i9n-0F-eUF"/>
                                                         <constraint firstAttribute="height" constant="30" id="vPf-7C-XGw"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="11"/>
                                                     <state key="normal" title="Button">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -519,7 +589,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="ahs-Ge-qQU"/>
                                                         <constraint firstAttribute="width" constant="110" id="dFm-pp-Fr4"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="11"/>
                                                     <state key="normal" title="Button">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -556,12 +626,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6t-gU-k4b">
+                                <rect key="frame" x="148" y="159" width="118" height="32"/>
+                                <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="16"/>
+                                <state key="normal" title="Write a review"/>
+                                <connections>
+                                    <segue destination="TND-kz-z0M" kind="show" identifier="ReviewSegueID" id="6ys-tW-y9i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="9ti-zd-H7j" firstAttribute="top" secondItem="w6t-gU-k4b" secondAttribute="bottom" constant="15" id="CbF-oD-PRo"/>
                             <constraint firstItem="fCB-ii-KMU" firstAttribute="top" secondItem="G2W-db-Kwl" secondAttribute="bottom" constant="2" id="Jqy-hu-hK8"/>
+                            <constraint firstItem="9ti-zd-H7j" firstAttribute="centerX" secondItem="lDE-M6-eZL" secondAttribute="centerX" id="OLj-cS-Wi4"/>
                             <constraint firstItem="G2W-db-Kwl" firstAttribute="centerX" secondItem="lDE-M6-eZL" secondAttribute="centerX" id="YzH-14-Bvz"/>
                             <constraint firstItem="fCB-ii-KMU" firstAttribute="centerX" secondItem="lDE-M6-eZL" secondAttribute="centerX" id="jmT-mE-inq"/>
+                            <constraint firstItem="w6t-gU-k4b" firstAttribute="top" secondItem="fCB-ii-KMU" secondAttribute="bottom" constant="8" id="oAq-w5-WQJ"/>
+                            <constraint firstItem="w6t-gU-k4b" firstAttribute="centerX" secondItem="lDE-M6-eZL" secondAttribute="centerX" id="tWw-ZK-3Xu"/>
                             <constraint firstItem="G2W-db-Kwl" firstAttribute="top" secondItem="OBg-2L-rSJ" secondAttribute="top" constant="13" id="xRb-aK-2ir"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OBg-2L-rSJ"/>
@@ -570,11 +652,14 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="WWz-CF-42x">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="O6n-e2-nVb" kind="presentation" id="hFs-OT-8R3"/>
+                                <segue destination="O6n-e2-nVb" kind="presentation" identifier="" id="hFs-OT-8R3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="nameLabel" destination="G2W-db-Kwl" id="FyR-aH-feh"/>
+                        <outlet property="professorLabel" destination="fCB-ii-KMU" id="gYv-cV-Lag"/>
+                        <outlet property="reviewButton" destination="w6t-gU-k4b" id="gg8-GR-M05"/>
                         <outlet property="tableView" destination="9ti-zd-H7j" id="UDr-Dy-sFq"/>
                     </connections>
                 </viewController>
@@ -590,7 +675,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="arrowtriangle.left.fill" catalog="system" id="szI-rK-Uww">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="24"/>
                             <color key="textColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
