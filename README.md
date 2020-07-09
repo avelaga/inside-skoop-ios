@@ -27,3 +27,5 @@ Networking | Makes GET and POST requests with REST API protocol
 
 ### Fun fact:
 - I'm hosting the backend on a raspberry pi that's sitting at my desk right now :D
+
+![img](https://i.imgur.com/RxmHgYS.jpg)
