@@ -51,7 +51,7 @@
                                 <rect key="frame" x="48" y="390" width="318" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-F5-AMg">
-                                        <rect key="frame" x="0.0" y="0.0" width="148" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
                                         <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Dxd-tU-WYO"/>
@@ -65,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00C-Jr-RbF">
-                                        <rect key="frame" x="168" y="0.0" width="150" height="35"/>
+                                        <rect key="frame" x="170" y="0.0" width="148" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fQC-f9-uGN"/>
                                             <constraint firstAttribute="width" constant="150" id="tbU-ir-Eg2"/>
@@ -467,9 +467,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdM-AX-kk9">
-                                <rect key="frame" x="149" y="662" width="120" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdM-AX-kk9">
+                                <rect key="frame" x="147" y="662" width="120" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="YUK-qZ-xfF"/>
+                                    <constraint firstAttribute="height" constant="38" id="mhJ-T4-OEq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="21"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -478,8 +481,8 @@
                                     <action selector="submit:" destination="TND-kz-z0M" eventType="touchUpInside" id="msF-rW-ym9"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Jy-ZF-2WY">
-                                <rect key="frame" x="48" y="316" width="318" height="125"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jy-ZF-2WY">
+                                <rect key="frame" x="48" y="285.5" width="318" height="125"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="318" id="BKi-2G-xge"/>
@@ -489,16 +492,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8G-v8-HP4">
-                                <rect key="frame" x="48" y="275" width="59" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8G-v8-HP4">
+                                <rect key="frame" x="48" y="259.5" width="59" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-I9-NXg">
-                                <rect key="frame" x="182" y="708" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-I9-NXg">
+                                <rect key="frame" x="168.5" y="707" width="77" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="OQH-bh-vor"/>
+                                    <constraint firstAttribute="height" constant="36" id="lOM-0q-fnz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Save draft"/>
                                 <connections>
                                     <action selector="draftPressed:" destination="TND-kz-z0M" eventType="touchUpInside" id="cE7-uD-3hr"/>
@@ -507,10 +513,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="o8G-v8-HP4" firstAttribute="leading" secondItem="7zn-gr-Tb1" secondAttribute="leading" constant="48" id="3TF-bY-xU9"/>
+                            <constraint firstItem="XdC-I9-NXg" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="6Yo-fP-dcX"/>
                             <constraint firstItem="gCw-NU-eHN" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="8U7-il-lgG"/>
                             <constraint firstItem="gCw-NU-eHN" firstAttribute="top" secondItem="7zn-gr-Tb1" secondAttribute="top" constant="40" id="8X8-Z0-PnP"/>
-                            <constraint firstItem="5Jy-ZF-2WY" firstAttribute="top" secondItem="FEJ-Y3-UsX" secondAttribute="bottom" constant="50" id="QXA-K9-Q7c"/>
+                            <constraint firstItem="XdC-I9-NXg" firstAttribute="top" secondItem="QdM-AX-kk9" secondAttribute="bottom" constant="7" id="NnD-C2-dgh"/>
                             <constraint firstItem="5Jy-ZF-2WY" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="SNf-Vq-zap"/>
+                            <constraint firstItem="5Jy-ZF-2WY" firstAttribute="top" secondItem="o8G-v8-HP4" secondAttribute="bottom" constant="5" id="VqS-bd-8bd"/>
+                            <constraint firstItem="o8G-v8-HP4" firstAttribute="top" secondItem="FEJ-Y3-UsX" secondAttribute="bottom" constant="15" id="gPU-j1-jKa"/>
+                            <constraint firstItem="QdM-AX-kk9" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="gTm-LE-PnK"/>
+                            <constraint firstItem="QdM-AX-kk9" firstAttribute="top" secondItem="7zn-gr-Tb1" secondAttribute="top" constant="574" id="iRK-Nl-QUc"/>
                             <constraint firstItem="FEJ-Y3-UsX" firstAttribute="firstBaseline" secondItem="gCw-NU-eHN" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="nhu-58-2R8"/>
                             <constraint firstItem="FEJ-Y3-UsX" firstAttribute="centerX" secondItem="ddh-3W-SHm" secondAttribute="centerX" id="p7s-ii-YaN"/>
                         </constraints>
@@ -703,7 +715,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hFs-OT-8R3"/>
+        <segue reference="SsG-bv-plh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>

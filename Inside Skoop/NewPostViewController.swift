@@ -122,6 +122,12 @@ class NewPostViewController: UIViewController {
         let newDraft = NSManagedObject(entity: d!, insertInto: context)
         newDraft.setValue(sem, forKey: "semester")
         newDraft.setValue(body, forKey: "body")
+        let controller = UIAlertController(
+            title: "Draft saved",
+            message: "You can leave this screen and finish editing later",
+            preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title:"Okay",style:.default,handler:nil))
+        self.present(controller, animated: true, completion: nil)
         do {
             try context.save()
         } catch {
