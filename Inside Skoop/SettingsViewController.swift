@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import CoreData
 
 class SettingsViewController: UIViewController {
     
@@ -27,6 +28,7 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if authenticated {
             titleField.isHidden = true
             emailField.isHidden = true
@@ -69,7 +71,82 @@ class SettingsViewController: UIViewController {
         loginButton.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    //    https://console.firebase.google.com/u/0/project/inside-skoop/authentication/users
+    func saveLogin(email: String, password: String){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let login = NSEntityDescription.entity(forEntityName: "Login", in: context)
+        let newUser = NSManagedObject(entity: login!, insertInto: context)
+        newUser.setValue(email, forKey: "email")
+        newUser.setValue(password, forKey: "password")
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+    }
+    
+    func deleteLogin() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                context.delete(data)
+            }
+            
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+        
+    }
+    
+    func deleteDarkmode(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DarkMode")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                context.delete(data)
+            }
+            
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+    }
+    
+    func setDarkmode() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let dm = NSEntityDescription.entity(forEntityName: "DarkMode", in: context)
+        let newSetting = NSManagedObject(entity: dm!, insertInto: context)
+        newSetting.setValue(darkMode, forKey: "on")
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+    }
+    
     @IBAction func signUpPressed(_ sender: Any) {
         if let email = emailField.text, let password = passwordField.text {
             Auth.auth().createUser( withEmail: email, password: password) {
@@ -79,8 +156,7 @@ class SettingsViewController: UIViewController {
                         password: password
                     )
                     authenticated = true
-                    defaults.set(email, forKey: "email")
-                    defaults.set(password, forKey: "password")
+                    self.saveLogin(email: email, password: password)
                     self.delegate.refresh()
                     self.dismiss(animated: true, completion: nil)
                 }else{
@@ -123,8 +199,7 @@ class SettingsViewController: UIViewController {
                 self.present(controller, animated: true, completion: nil)
             } else{
                 authenticated = true
-                defaults.set(email, forKey: "email")
-                defaults.set(password, forKey: "password")
+                self.saveLogin(email: email, password: password)
                 self.delegate.refresh()
                 self.dismiss(animated: true, completion: nil)
                 }
@@ -132,8 +207,7 @@ class SettingsViewController: UIViewController {
         }
     }
     @IBAction func logoutPressed(_ sender: Any) {
-        defaults.removeObject(forKey: "email")
-        defaults.removeObject(forKey: "password")
+        deleteLogin()
         authenticated = false
         delegate.refresh()
         self.dismiss(animated: true, completion: nil)
@@ -149,8 +223,9 @@ class SettingsViewController: UIViewController {
             overrideUserInterfaceStyle = .light
             darkModeButton.tintColor = .black
         }
-        defaults.removeObject(forKey: "darkMode")
-        defaults.set(darkMode, forKey: "darkMode")
+        
+        deleteDarkmode() // remove object
+        setDarkmode() // save new toggled version
         delegate.refresh()
     }
 }

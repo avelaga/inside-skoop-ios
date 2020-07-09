@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import CoreData
 
 let defaults = UserDefaults.standard
 var authenticated = false
@@ -63,7 +64,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         initUIStyles()
         autoLogin()
         getDepartments()
-        darkMode = defaults.bool(forKey: "darkMode")
+        darkMode = retreiveDarkmode()
     }
     
     // get list of available departments from backend
@@ -84,7 +85,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             // Convert HTTP Response Data to a simple String
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                //                print("Response data string:\n \(dataString)")
                 
                 let jsondata = dataString.data(using: .utf8)!
                 let dep: [Department] = try! JSONDecoder().decode([Department].self, from: jsondata)
@@ -116,15 +116,60 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // if login credentials are stored on device, login on launch
     func autoLogin(){
-        let email = defaults.string(forKey: "email")
-        if email != nil {
-            let password = defaults.string(forKey: "password")
+        let creds:(email: String, password: String) = retreiveLogin()
+        print(creds)
+        if creds.email != "error" {
             Auth.auth().signIn(
-                withEmail: email!,
-                password: password!
+                withEmail: creds.email,
+                password: creds.password
             )
             authenticated = true
         }
+    }
+    
+    func retreiveLogin() -> (email: String, password: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                let email = data.value(forKey: "email") as! String
+                let password = data.value(forKey: "password") as! String
+                print(email)
+                print(password)
+                return (email: email, password: password)
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+        return (email: "error", password: "error")
+    }
+    
+    func retreiveDarkmode() -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DarkMode")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                let on = data.value(forKey: "on") as! Bool
+                print("darkmode: \(on)")
+                return on
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+        return false
     }
     
     // these have to be programatically defined

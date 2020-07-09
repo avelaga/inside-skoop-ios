@@ -75,7 +75,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             // Convert HTTP Response Data to a simple String
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                //                print("Response data string:\n \(dataString)")
                 let jsondata = dataString.data(using: .utf8)!
                 self.posts = try! JSONDecoder().decode([Post].self, from: jsondata)
                 DispatchQueue.main.async {
@@ -95,9 +94,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath as IndexPath) as! DetailTableViewCell
         let row = indexPath.row
-        //        cell.tagOneText = reviews[row].tagOne
-        //        cell.tagTwoText = reviews[row].tagTwo
-        
+
         var tagOne:String!
         var tagTwo:String!
         
