@@ -4,7 +4,13 @@
         <attribute name="on" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="Draft" representedClassName="Draft" syncable="YES" codeGenerationType="class">
+        <attribute name="actuallyUseful" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="course_name" optional="YES" attributeType="String"/>
+        <attribute name="easyA" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="goodProfessor" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lightHomework" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="projectHeavy" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="semester" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Login" representedClassName="Login" syncable="YES" codeGenerationType="class">
@@ -14,6 +20,6 @@
     <elements>
         <element name="DarkMode" positionX="-54" positionY="9" width="128" height="58"/>
         <element name="Login" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="Draft" positionX="-54" positionY="0" width="128" height="73"/>
+        <element name="Draft" positionX="-54" positionY="0" width="128" height="163"/>
     </elements>
 </model>
