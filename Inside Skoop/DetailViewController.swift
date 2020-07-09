@@ -61,7 +61,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func getPosts(){
         posts.removeAll()
         let id = course!.id
-        let url = URL(string: "http://localhost:8000/posts/course/\(id)")
+        let url = URL(string: "\(rootUrl)/posts/course/\(id)")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -78,6 +78,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 //                print("Response data string:\n \(dataString)")
                 let jsondata = dataString.data(using: .utf8)!
                 self.posts = try! JSONDecoder().decode([Post].self, from: jsondata)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
             
         }

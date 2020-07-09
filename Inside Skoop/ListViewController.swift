@@ -49,7 +49,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func getCourses(){
         courses.removeAll()
-        let url = URL(string: "http://localhost:8000/courses")
+        let url = URL(string: "\(rootUrl)/courses")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -66,7 +66,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 let jsondata = dataString.data(using: .utf8)!
                 self.courses = try! JSONDecoder().decode([Course].self, from: jsondata)
-                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
             
         }
@@ -75,6 +77,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courses.count
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

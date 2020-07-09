@@ -14,6 +14,9 @@ let defaults = UserDefaults.standard
 var authenticated = false
 var darkMode = false
 
+//let rootUrl = "http://abhivelaga.com:8000" // public facing url !!!!!! Dr.Bulko - make sure this is uncommented and the line after is commented !!!!!
+let rootUrl = "http://192.168.1.170:8000" // private url
+
 struct Department: Decodable {
     let id: Int
     let name: String
@@ -63,7 +66,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func getDepartments(){
         departments.removeAll()
         departments.append("All Departments")
-        let url = URL(string: "http://localhost:8000/departments")
+        let url = URL(string: "\(rootUrl)/departments")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -75,37 +78,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 return
             }
             
-            // Read HTTP Response Status code
-            //            if let response = response as? HTTPURLResponse {
-            //                print("Response HTTP Status code: \(response.statusCode)")
-            //            }
-            
             // Convert HTTP Response Data to a simple String
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
                 //                print("Response data string:\n \(dataString)")
                 
                 let jsondata = dataString.data(using: .utf8)!
                 let dep: [Department] = try! JSONDecoder().decode([Department].self, from: jsondata)
-                
-                for index in 0..<dep.count {
-                    self.departments.append(dep[index].name)
+                DispatchQueue.main.async {
+                    for index in 0..<dep.count {
+                        self.departments.append(dep[index].name)
+                    }
                 }
             }
-            
         }
         task.resume()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //        if authenticated {
-        //            titleLabel.text = "Hi Abhi"
-        //            subtitleLabel.isHidden = true
-        //            writeAReviewButton.isHidden = false
-        //        }else{
-        //            titleLabel.text = "Get the inside skoop on the classes you want to take"
-        //            subtitleLabel.isHidden = false
-        //            writeAReviewButton.isHidden = true
-        //        }
         if(darkMode){
             overrideUserInterfaceStyle = .dark
         }else{
@@ -158,10 +147,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         searchButton.layer.borderColor = UIColor.lightGray.cgColor
         searchButton.layer.cornerRadius = 23.0
         searchButton.layer.borderWidth = 1.0
-        
-        //        writeAReviewButton.layer.cornerRadius = 23
-        //        writeAReviewButton.layer.borderColor = UIColor.lightGray.cgColor
-        //        writeAReviewButton.layer.borderWidth = 1.0
     }
     
     func setButtonAsSelected(button: UIButton){

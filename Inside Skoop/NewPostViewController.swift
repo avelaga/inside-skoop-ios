@@ -19,8 +19,6 @@ class NewPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        reviewField.insertTextPlaceholder(with: <#T##CGSize#>)
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,15 +30,6 @@ class NewPostViewController: UIViewController {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     @IBAction func submit(_ sender: Any) {
         
         if semesterField.text != "", reviewField.text != "" {
@@ -52,7 +41,7 @@ class NewPostViewController: UIViewController {
             let jsonData = try? JSONSerialization.data(withJSONObject: json)
             
             // create post request
-            let url = URL(string: "http://localhost:8000/posts/create")!
+            let url = URL(string: "\(rootUrl)/posts/create")!
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             
