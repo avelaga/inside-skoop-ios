@@ -16,7 +16,7 @@ Developed by Abhi Velaga
 
 ### Features:
 Feature | Description
---- | ---
+:---: | :---:
 Login | Allows user to create account and login with Firebase
 UI | Colors, buttons, and navigation 
 Settings | Screen to sign up as new user, login, logout and toggle dark mode
