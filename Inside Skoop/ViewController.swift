@@ -17,8 +17,8 @@ let defaults = UserDefaults.standard
 var authenticated = false
 var darkMode = false
 
-let rootUrl = "http://abhivelaga.com:8000" // public facing url !!!!!! Dr.Bulko - make sure this is uncommented and the line after is commented !!!!!
-//let rootUrl = "http://192.168.1.170:8000" // private url
+//let rootUrl = "http://abhivelaga.com:8000" // public facing url !!!!!! Dr.Bulko - make sure this is uncommented and the line after is commented !!!!!
+let rootUrl = "http://192.168.1.170:8000" // private url
 
 struct Department: Decodable {
     let id: Int
@@ -139,8 +139,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             for data in result as! [NSManagedObject] {
                 let email = data.value(forKey: "email") as! String
                 let password = data.value(forKey: "password") as! String
-                print(email)
-                print(password)
                 return (email: email, password: password)
             }
             

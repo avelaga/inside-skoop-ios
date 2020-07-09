@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewPostViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     var course_name = ""
     var id = 0
+    var draftLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,7 @@ class NewPostViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         titleLabel.text = "Give future students the inside scoop about \(course_name)!"
+        retreiveDraft() // retreive draft saved in core data if it exists
         if darkMode {
             overrideUserInterfaceStyle = .dark
         }else{
@@ -34,6 +37,12 @@ class NewPostViewController: UIViewController {
     
     @IBAction func submit(_ sender: Any) {
         if semesterField.text != "", reviewField.text != "" {
+            
+            // previously loaded draft is finished and being submitted so delete it from core data
+            if draftLoaded {
+                deleteDraft()
+            }
+            draftLoaded = false
             
             // prepare json data
             let json: [String: Any] = ["courseId": id,
@@ -78,6 +87,75 @@ class NewPostViewController: UIViewController {
             controller.addAction(UIAlertAction(title:"Okay",style:.default,handler:nil))
             self.present(controller, animated: true, completion: nil)
         }
+    }
+    
+    func deleteDraft(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Draft")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                context.delete(data)
+            }
+            
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+    }
+    
+    func saveDraft() {
+        let sem = semesterField.text
+        let body = reviewField.text
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let d = NSEntityDescription.entity(forEntityName: "Draft", in: context)
+        let newDraft = NSManagedObject(entity: d!, insertInto: context)
+        newDraft.setValue(sem, forKey: "semester")
+        newDraft.setValue(body, forKey: "body")
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+    }
+    
+    func retreiveDraft() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Draft")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                let sem = data.value(forKey: "semester") as! String
+                let body = data.value(forKey: "body") as! String
+                semesterField.text = sem
+                reviewField.text = body
+                draftLoaded = true
+            }
+            
+        } catch {
+            print("Failed to retreive draft")
+        }
+    }
+    
+    @IBAction func draftPressed(_ sender: Any) {
+        // we're saving new version of a draft, delete old version from core data first
+        if draftLoaded {
+            deleteDraft()
+        }
+        saveDraft()
     }
     
     // code to enable tapping on the background to remove software keyboard

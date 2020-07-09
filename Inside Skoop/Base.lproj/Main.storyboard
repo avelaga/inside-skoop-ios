@@ -51,7 +51,7 @@
                                 <rect key="frame" x="48" y="390" width="318" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-F5-AMg">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="35"/>
                                         <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Dxd-tU-WYO"/>
@@ -65,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00C-Jr-RbF">
-                                        <rect key="frame" x="170" y="0.0" width="148" height="35"/>
+                                        <rect key="frame" x="168" y="0.0" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fQC-f9-uGN"/>
                                             <constraint firstAttribute="width" constant="150" id="tbU-ir-Eg2"/>
@@ -496,6 +496,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdC-I9-NXg">
+                                <rect key="frame" x="182" y="708" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save draft"/>
+                                <connections>
+                                    <action selector="draftPressed:" destination="TND-kz-z0M" eventType="touchUpInside" id="cE7-uD-3hr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
