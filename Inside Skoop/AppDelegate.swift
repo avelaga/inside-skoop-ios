@@ -1,6 +1,8 @@
 //
 //  AppDelegate.swift
 //  Inside Skoop
+//  EID: ASV583
+//  Course: CS371L
 //
 //  Created by Abhi Velaga on 7/4/20.
 //  Copyright © 2020 Abhi Velaga. All rights reserved.

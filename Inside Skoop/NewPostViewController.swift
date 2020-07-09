@@ -1,6 +1,8 @@
 //
 //  NewPostViewController.swift
 //  Inside Skoop
+//  EID: ASV583
+//  Course: CS371L
 //
 //  Created by Abhi Velaga on 7/5/20.
 //  Copyright © 2020 Abhi Velaga. All rights reserved.
@@ -31,7 +33,6 @@ class NewPostViewController: UIViewController {
     }
     
     @IBAction func submit(_ sender: Any) {
-        
         if semesterField.text != "", reviewField.text != "" {
             
             // prepare json data
@@ -79,4 +80,13 @@ class NewPostViewController: UIViewController {
         }
     }
     
+    // code to enable tapping on the background to remove software keyboard
+    func textFieldShouldReturn(textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
