@@ -14,4 +14,11 @@ Developed by Abhi Velaga
 - You can sign up with an arbitrary email and password on the settings page in order to have authentication for posting
 - You're welcome to post reviews to test the functionality, I'm not going to be using this database for anything else
 
+### Features:
+- Users can search for courses with a variety of optional parameters
+- Users can see all reviews/advice left by previous students by class
+- Users can sign up/login
+- Users can write reviews for classes
+- Ability to toggle dark mode
+- Dark mode and login credentials are saved on the device and persistent between launches
 
