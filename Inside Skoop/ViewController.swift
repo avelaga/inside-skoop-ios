@@ -14,8 +14,8 @@ let defaults = UserDefaults.standard
 var authenticated = false
 var darkMode = false
 
-let rootUrl = "http://abhivelaga.com:8000" // public facing url !!!!!! Dr.Bulko - make sure this is uncommented and the line after is commented !!!!!
-//let rootUrl = "http://192.168.1.170:8000" // private url
+//let rootUrl = "http://abhivelaga.com:8000" // public facing url !!!!!! Dr.Bulko - make sure this is uncommented and the line after is commented !!!!!
+let rootUrl = "http://192.168.1.170:8000" // private url
 
 struct Department: Decodable {
     let id: Int
@@ -254,8 +254,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if segue.identifier == "SearchSegueID" {
             // send search parameters to list view vc
             let destination = segue.destination as! ListViewController
-            destination.query = query
-            destination.department = department
+            destination.query = searchField.text!
+            destination.department = departmentField.text!
             destination.easyA = easyA
             destination.goodProfessor = goodProfessor
             destination.lightHomework = lightHomework

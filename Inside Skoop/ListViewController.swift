@@ -48,8 +48,35 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func getCourses(){
+        if department == "All Departments" {
+            department = ""
+        }
+        
+        var params = "?"
+        if query != "" {
+            params += "&query=\(query)"
+        }
+        if department != "" {
+            params += "&department=\(department)"
+        }
+        if easyA {
+            params += "&easyA=true"
+        }
+        if goodProfessor {
+            params += "&goodProfessor=true"
+        }
+        if lightHomework {
+            params += "&lightHomework=true"
+        }
+        if projectHeavy {
+            params += "&projectHeavy=true"
+        }
+        if actuallyUseful {
+            params += "&actuallyUseful=true"
+        }
+        
         courses.removeAll()
-        let url = URL(string: "\(rootUrl)/courses")
+        let url = URL(string: "\(rootUrl)/courses\(params)")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -77,7 +104,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courses.count
-       
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,10 +112,47 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath as IndexPath) as! ResultTableViewCell
         let row = indexPath.row
         
+        var one = ""
+        var two = ""
         
+        if easyA {
+            one = "Easy A"
+        }
+        if goodProfessor {
+            if one == "" {
+                one = "Good Professor"
+            }else{
+                two = "Good Professor"
+            }
+        }
+        if lightHomework {
+            if one == "" {
+                one = "Light Homework"
+            }else{
+                two = "Light Homework"
+            }
+        }
+        if projectHeavy {
+            if one == "" {
+                one = "Project Heavy"
+            }else{
+                two = "Project Heavy"
+            }
+        }
+        if actuallyUseful {
+            if one == "" {
+                one = "Actually Useful"
+            }else{
+                two = "Actually Useful"
+            }
+        }
         
-        //        cell.tagOneText = results[row].one
-        //        cell.tagTwoText = results[row].two
+        if one != "" {
+            cell.tagOneText = one
+        }
+        if two != "" {
+            cell.tagTwoText = two
+        }
         cell.courseName = courses[row].course_name
         cell.professor = courses[row].professor_name
         

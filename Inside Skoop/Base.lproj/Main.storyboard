@@ -51,7 +51,7 @@
                                 <rect key="frame" x="48" y="390" width="318" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-F5-AMg">
-                                        <rect key="frame" x="0.0" y="0.0" width="148" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
                                         <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Dxd-tU-WYO"/>
@@ -65,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00C-Jr-RbF">
-                                        <rect key="frame" x="168" y="0.0" width="150" height="35"/>
+                                        <rect key="frame" x="170" y="0.0" width="148" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fQC-f9-uGN"/>
                                             <constraint firstAttribute="width" constant="150" id="tbU-ir-Eg2"/>
@@ -371,25 +371,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-Eh-dtw">
-                                                    <rect key="frame" x="270" y="25" width="95" height="25"/>
+                                                    <rect key="frame" x="262" y="25" width="110" height="25"/>
                                                     <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="95" id="PXR-74-uFC"/>
+                                                        <constraint firstAttribute="width" constant="110" id="PXR-74-uFC"/>
                                                         <constraint firstAttribute="height" constant="25" id="f3L-gz-SDr"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="11"/>
                                                     <state key="normal" title="Tag 1">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gN-ks-rwi">
-                                                    <rect key="frame" x="270" y="57" width="95" height="25"/>
+                                                    <rect key="frame" x="262" y="57" width="110" height="25"/>
                                                     <color key="backgroundColor" red="0.93122458460000002" green="0.49081480500000002" blue="0.47449564929999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="95" id="I2t-92-S6T"/>
+                                                        <constraint firstAttribute="width" constant="110" id="I2t-92-S6T"/>
                                                         <constraint firstAttribute="height" constant="25" id="P6d-xJ-3rv"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="AkzidenzGroteskBE-LightEx" family="Berthold Akzidenz Grotesk BE" pointSize="11"/>
                                                     <state key="normal" title="Tag 2">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -404,8 +404,8 @@
                                                 <constraint firstItem="5Lv-5u-Eow" firstAttribute="top" secondItem="DXc-FC-wDY" secondAttribute="top" constant="20" id="JSm-V1-q1B"/>
                                                 <constraint firstItem="UnJ-Y5-1Qe" firstAttribute="top" secondItem="5Lv-5u-Eow" secondAttribute="bottom" constant="-2" id="TRA-WX-bCF"/>
                                                 <constraint firstItem="DUb-ge-gHl" firstAttribute="top" secondItem="DXc-FC-wDY" secondAttribute="top" constant="5.5" id="d5L-ac-WeV"/>
-                                                <constraint firstItem="1gN-ks-rwi" firstAttribute="leading" secondItem="5Lv-5u-Eow" secondAttribute="trailing" constant="8" id="dfa-w0-0Ae"/>
-                                                <constraint firstItem="Gb4-Eh-dtw" firstAttribute="leading" secondItem="5Lv-5u-Eow" secondAttribute="trailing" constant="8" id="iZu-FD-dbi"/>
+                                                <constraint firstItem="1gN-ks-rwi" firstAttribute="leading" secondItem="5Lv-5u-Eow" secondAttribute="trailing" id="dfa-w0-0Ae"/>
+                                                <constraint firstItem="Gb4-Eh-dtw" firstAttribute="leading" secondItem="5Lv-5u-Eow" secondAttribute="trailing" id="iZu-FD-dbi"/>
                                                 <constraint firstItem="UnJ-Y5-1Qe" firstAttribute="leading" secondItem="DXc-FC-wDY" secondAttribute="leading" constant="45" id="v95-cx-va1"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -695,7 +695,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fQN-mp-x29"/>
+        <segue reference="hFs-OT-8R3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
