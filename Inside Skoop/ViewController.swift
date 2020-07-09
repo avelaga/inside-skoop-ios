@@ -117,7 +117,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // if login credentials are stored on device, login on launch
     func autoLogin(){
         let creds:(email: String, password: String) = retreiveLogin()
-        print(creds)
         if creds.email != "error" {
             Auth.auth().signIn(
                 withEmail: creds.email,
@@ -132,7 +131,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let context = appDelegate.persistentContainer.viewContext
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
-        //request.predicate = NSPredicate(format: "age = %@", "12")
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request)
@@ -161,7 +159,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
                 let on = data.value(forKey: "on") as! Bool
-                print("darkmode: \(on)")
                 return on
             }
             

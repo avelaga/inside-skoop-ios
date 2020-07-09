@@ -15,12 +15,13 @@ Developed by Abhi Velaga
 - You're welcome to post reviews to test the functionality, I'm not going to be using this database for anything else
 
 ### Features:
-- Users can search for courses with a variety of optional parameters
-- Users can see all reviews/advice left by previous students by class
-- Users can sign up/login
-- Users can write reviews for classes
-- Ability to toggle dark mode
-- Dark mode and login credentials are saved on the device and persistent between launches
+Feature | Description
+--- | ---
+Login | Allows user to create account and login with Firebase
+UI | Colors, buttons, and navigation 
+Settings | Screen to sign up as new user, login, logout and toggle dark mode
+Search | UI to add search criteria for courses
+New posts | Allows users to write new posts to a particular class
 
 ### Fun fact:
 - I'm hosting the backend on a raspberry pi that's sitting at my desk :D
