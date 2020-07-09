@@ -22,6 +22,7 @@ UI | Colors, buttons, and navigation
 Settings | Screen to sign up as new user, login, logout and toggle dark mode
 Search | UI to add search criteria for courses
 New posts | Allows users to write new posts to a particular class
+Drafts | Allows users to save drafts of new reviews on the device to finish later
 
 ### Fun fact:
 - I'm hosting the backend on a raspberry pi that's sitting at my desk :D
