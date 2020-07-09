@@ -22,3 +22,5 @@ Developed by Abhi Velaga
 - Ability to toggle dark mode
 - Dark mode and login credentials are saved on the device and persistent between launches
 
+### Fun fact:
+- I'm hosting the backend on a raspberry pi that's sitting at my desk :D

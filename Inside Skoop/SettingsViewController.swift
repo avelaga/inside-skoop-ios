@@ -17,8 +17,10 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var darkModeButton: UIButton!
-    
     @IBOutlet weak var logoutButton: UIButton!
+    
+    var delegate: PopoverGiver!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         styleUI()
@@ -79,6 +81,7 @@ class SettingsViewController: UIViewController {
                     authenticated = true
                     defaults.set(email, forKey: "email")
                     defaults.set(password, forKey: "password")
+                    self.delegate.refresh()
                     self.dismiss(animated: true, completion: nil)
                 }else{
                     switch error {
@@ -122,6 +125,7 @@ class SettingsViewController: UIViewController {
                 authenticated = true
                 defaults.set(email, forKey: "email")
                 defaults.set(password, forKey: "password")
+                self.delegate.refresh()
                 self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -131,6 +135,7 @@ class SettingsViewController: UIViewController {
         defaults.removeObject(forKey: "email")
         defaults.removeObject(forKey: "password")
         authenticated = false
+        delegate.refresh()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -146,5 +151,6 @@ class SettingsViewController: UIViewController {
         }
         defaults.removeObject(forKey: "darkMode")
         defaults.set(darkMode, forKey: "darkMode")
+        delegate.refresh()
     }
 }

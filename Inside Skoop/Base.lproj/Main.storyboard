@@ -300,7 +300,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="FKN-71-uS6">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="O6n-e2-nVb" kind="presentation" id="fQN-mp-x29"/>
+                                <segue destination="O6n-e2-nVb" kind="presentation" identifier="SettingsSegueID" id="fQN-mp-x29"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -427,7 +427,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="gTB-9W-lcv">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="O6n-e2-nVb" kind="presentation" id="SsG-bv-plh"/>
+                                <segue destination="O6n-e2-nVb" kind="presentation" identifier="SettingsSegueID" id="SsG-bv-plh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -652,7 +652,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="WWz-CF-42x">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="O6n-e2-nVb" kind="presentation" identifier="" id="hFs-OT-8R3"/>
+                                <segue destination="O6n-e2-nVb" kind="presentation" identifier="SettingsSegueID" id="hFs-OT-8R3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

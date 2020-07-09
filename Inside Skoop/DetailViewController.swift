@@ -20,7 +20,7 @@ struct Post: Decodable {
     let course: URL
 }
 
-class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PopoverGiver {
     
     var course: Course!
     var posts: [Post] = []
@@ -154,11 +154,31 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return UITableView.automaticDimension
     }
     
+    func refresh() {
+        if authenticated {
+            reviewButton.setTitle("Write a review", for: .normal)
+            reviewButton.isEnabled = true
+        }else{
+            reviewButton.setTitle("Login in settings to leave a review", for: .normal)
+            reviewButton.isEnabled = false
+        }
+        
+        if(darkMode){
+            overrideUserInterfaceStyle = .dark
+        }else{
+            overrideUserInterfaceStyle = .light
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ReviewSegueID" {
             let destination = segue.destination as! NewPostViewController
             destination.course_name = course!.course_name
             destination.id = course!.id 
+        }
+        else if segue.identifier == "SettingsSegueID" {
+            let destination = segue.destination as! SettingsViewController
+            destination.delegate = self
         }
     }
     

@@ -16,7 +16,7 @@ struct Course: Decodable {
     let course_name: String
 }
 
-class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PopoverGiver {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -106,11 +106,23 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return UITableView.automaticDimension
     }
     
+    func refresh() {
+        if(darkMode){
+            overrideUserInterfaceStyle = .dark
+        }else{
+            overrideUserInterfaceStyle = .light
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegueID" {
             // send search parameters to list view vc
             let destination = segue.destination as! DetailViewController
             destination.course = courses[selectedRow]
+        }
+        else if segue.identifier == "SettingsSegueID" {
+            let destination = segue.destination as! SettingsViewController
+            destination.delegate = self
         }
     }
 }
