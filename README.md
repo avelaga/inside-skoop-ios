@@ -1,6 +1,7 @@
 # Inside Skoop
 ### An iOS app that allows students to easily find courses to take based on their search criteria as well as leave reviews for future students to see
-Developed by Abhi Velaga
+
+<img src="https://i.imgur.com/HWOkren.jpg"/>
 
 ### Dependencies:
 - Xcode Version 11.4.1 (11E503a)
